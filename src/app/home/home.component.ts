@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 import randomWords from "random-words";
+import { LoadOnDemandListViewEventData } from "nativescript-ui-listview";
 
 @Component({
     selector: "Home",
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
 	}
 	
 	addNames() {
-		const amount = 100;
+		const amount = 20;
 		let newWords: string[] = [];
 
 		for (let i = 0; i < amount; i++) {
@@ -30,7 +31,8 @@ export class HomeComponent implements OnInit {
 		this.items.push(newWords);
 	}
 
-	onLoadMoreItemsRequested(args) {
+	onLoadMoreItemsRequested(args: LoadOnDemandListViewEventData) {
+		console.log("called")
 		this.addNames();
 		args.object.notifyLoadOnDemandFinished();
 	}
