@@ -1,0 +1,11 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="Home"></Label>
+</ActionBar>
+
+<StackLayout class="page">
+	<RadListView [items]="items" loadOnDemandMode="Auto" (loadMoreDataRequested)="onLoadMoreItemsRequested($event)">
+		<ng-template tkListItemTemplate let-item="item">
+			<Label [text]="item"></Label>
+		</ng-template>
+	</RadListView>
+</StackLayout>
